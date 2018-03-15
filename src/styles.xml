@@ -1,0 +1,678 @@
+<?xml version='1.0' encoding='utf-8'?>
+<styles>
+  <global>
+    <default/>
+    <linenumber fore="#808080" back="#E4E4E4"/>
+    <bracelight fore="#FF0000" modifiers="bold"/>
+    <bracebad fore="#800000"/>
+    <indentguide fore="#C0C0C0"/>
+	<caretforeground fore="#8000FF"/>
+    <caretlineback back="#E8E8FF"/>
+  </global>
+  <ada>
+    <default/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <identifier/>
+    <number fore="#FF8000"/>
+    <delimiter fore="#FF8080" modifiers="bold"/>
+    <character fore="#808080"/>
+    <charactereol/>
+    <string fore="#808080"/>
+    <stringeol/>
+    <label fore="#804000" modifiers="bold"/>
+    <commentline fore="#008000"/>
+    <illegal fore="#FF0000"/>
+  </ada>
+  <asm>
+    <default/>
+    <comment fore="#008000"/>
+    <number fore="#FF8000"/>
+    <string fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <cpuinstruction fore="#0000FF" modifiers="bold"/>
+    <mathinstruction fore="#0080C0" modifiers="bold"/>
+    <register fore="#8080FF" back="#FFFFCC" modifiers="bold"/>
+    <directive fore="#0080FF"/>
+    <directiveoperand fore="#000080" modifiers="bold"/>
+    <commentblock fore="#008000"/>
+    <character fore="#808000"/>
+    <stringeol/>
+    <extinstruction fore="#804000" modifiers="bold"/>
+  </asm>
+  <au3>
+    <default/>
+    <comment fore="#008000"/>
+    <commentblock fore="#008000"/>
+    <number fore="#FF8000"/>
+    <function fore="#8000FF"/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <macro fore="#8000FF"/>
+    <string fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <variable fore="#FF0080" modifiers="italic"/>
+    <sent fore="#8080C0"/>
+    <preprocessor fore="#804000"/>
+    <special/>
+    <expand/>
+    <comobj/>
+  </au3>
+  <bash>
+    <default/>
+    <error back="#FF0000"/>
+    <commentline fore="#008000"/>
+    <number fore="#FF0000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <operator fore="#804000" modifiers="bold"/>
+    <identifier/>
+    <scalar fore="#FF8040" back="#FFFFD9" modifiers="bold"/>
+    <param fore="#008080" back="#00FFFF"/>
+    <backticks fore="#804040" back="#E1FFF3" modifiers="bold"/>
+    <here_delim fore="#0000FF" back="#FF0000" modifiers="bold"/>
+    <here_q fore="#FF0000" back="#0000FF"/>
+  </bash>
+  <batch>
+    <default/>
+    <comment fore="#008000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <label fore="#FF0000" back="#FFFF80" modifiers="bold"/>
+    <hide fore="#FF00FF"/>
+    <command fore="#0080FF"/>
+    <identifier fore="#FF8000" back="#FCFFF0" modifiers="bold"/>
+    <operator fore="#FF0000" modifiers="bold"/>
+  </batch>
+  <caml>
+    <default/>
+    <identifier/>
+    <tagname/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <keyword2 fore="#8000FF"/>
+    <keyword3 fore="#8000FF"/>
+    <linenum modifiers="bold"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <number fore="#FF8000"/>
+    <char fore="#808080"/>
+    <string fore="#808080"/>
+    <comment fore="#008000"/>
+    <comment1 fore="#008000"/>
+    <comment2 fore="#008080"/>
+    <comment3 fore="#008080"/>
+  </caml>
+  <cmake>
+    <default/>
+    <comment fore="#008000"/>
+    <stringdq fore="#808080"/>
+    <stringlq fore="#808080" modifiers="italic"/>
+    <stringrq fore="#808080" modifiers="underline"/>
+    <commands fore="#0000FF" modifiers="bold"/>
+    <parameters fore="#8000FF"/>
+    <variable fore="#FF8040"/>
+    <userdefined fore="#000080" modifiers="bold"/>
+    <whiledef fore="#0080FF" modifiers="bold"/>
+    <foreachdef fore="#008080" modifiers="bold"/>
+    <ifdefinedef fore="#8000FF" modifiers="bold"/>
+    <macrodef fore="#FF0000" modifiers="bold"/>
+    <stringvar fore="#808080" modifiers="bold"/>
+    <number fore="#804040" modifiers="bold"/>
+  </cmake>
+  <cpp>
+    <default/>
+    <comment fore="#008000"/>
+    <commentline fore="#008000"/>
+    <commentdoc fore="#008080"/>
+    <number fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <uuid/>
+    <preprocessor fore="#804000"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <stringeol modifiers="eol"/>
+    <verbatim/>
+    <regex modifiers="bold"/>
+    <commentlinedoc fore="#008080"/>
+    <word2 fore="#8000FF"/>
+    <commentdockeyword fore="#008080" modifiers="bold"/>
+    <commentdockeyworderror fore="#008080"/>
+    <globalclass/>
+    <_hj_start/>
+    <_hj_default back="#F2F4FF"/>
+    <_hj_comment fore="#008000"/>
+    <_hj_commentline fore="#008000"/>
+    <_hj_commentdoc fore="#008080"/>
+    <_hj_number fore="#FF0000"/>
+    <_hj_word/>
+    <_hj_keyword fore="#000080" modifiers="bold,italic"/>
+    <_hj_doublestring fore="#808080"/>
+    <_hj_singlestring fore="#808080"/>
+    <_hj_symbols modifiers="bold"/>
+    <_hj_stringeol modifiers="eol"/>
+    <_hj_regex fore="#8000FF"/>
+    <_hja_start/>
+    <_hja_default back="#F2F4FF"/>
+    <_hja_comment fore="#008000"/>
+    <_hja_commentline fore="#008000"/>
+    <_hja_commentdoc fore="#008080"/>
+    <_hja_number fore="#FF0000"/>
+    <_hja_word/>
+    <_hja_keyword fore="#000080" modifiers="bold,italic"/>
+    <_hja_doublestring fore="#808080"/>
+    <_hja_singlestring fore="#808080"/>
+    <_hja_symbols modifiers="bold"/>
+    <_hja_stringeol modifiers="eol"/>
+    <_hja_regex fore="#8000FF"/>
+  </cpp>
+  <css>
+    <default/>
+    <tag fore="#0000FF" face="Batang"/>
+    <class fore="#FF0000"/>
+    <pseudoclass fore="#FF8000" modifiers="bold"/>
+    <unknown_pseudoclass fore="#FF8080"/>
+    <operator modifiers="bold"/>
+    <identifier fore="#8080C0" modifiers="bold"/>
+    <unknown_identifier/>
+    <value modifiers="bold"/>
+    <comment fore="#008000"/>
+    <id fore="#0080FF" modifiers="bold"/>
+    <important fore="#FF0000"/>
+    <directive fore="#0080FF"/>
+    <doublestring/>
+    <singlestring/>
+    <identifier2/>
+    <attribute/>
+  </css>
+  <d>
+    <default/>
+    <comment fore="#008000"/>
+    <commentline fore="#008000"/>
+    <commentdoc fore="#008080"/>
+    <commentnested fore="#008080"/>
+    <number fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <word2/>
+    <word3/>
+    <typedef/>
+    <string fore="#808080"/>
+    <stringeol modifiers="eol"/>
+    <character fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <commentlinedoc fore="#008080"/>
+    <commentdockeyword fore="#008080" modifiers="bold"/>
+    <commentdockeyworderror fore="#008080"/>
+    <stringb/>
+    <stringr/>
+    <word5/>
+    <word6/>
+    <word7/>
+  </d>
+  <diff>
+    <default/>
+    <comment fore="#008000"/>
+    <command fore="#0000FF" modifiers="bold"/>
+    <header fore="#8000FF"/>
+    <position fore="#FF8000"/>
+    <deleted fore="#808040"/>
+    <added fore="#0080FF"/>
+  </diff>
+  <fortran>
+    <default/>
+    <comment fore="#008000"/>
+    <number fore="#FF8000"/>
+    <string1 fore="#808080"/>
+    <string2 fore="#808080" modifiers="bold"/>
+    <stringeol modifiers="eol"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <word2 fore="#8000FF" modifiers="bold"/>
+    <word3 fore="#0080C0" modifiers="bold"/>
+    <preprocessor fore="#800000"/>
+    <operator2 fore="#808080"/>
+    <label fore="#FFFFFF" back="#FF80FF" modifiers="bold"/>
+    <continuation fore="#008000"/>
+  </fortran>
+  <gui4cli>
+    <default/>
+    <commentline fore="#008000"/>
+    <commentblock fore="#008000"/>
+    <global fore="#0000FF" modifiers="bold"/>
+    <event fore="#0000FF" modifiers="bold"/>
+    <attribute fore="#8000FF"/>
+    <control fore="#8000FF"/>
+    <command fore="#8000FF"/>
+    <string fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+  </gui4cli>
+  <haskell>
+    <default/>
+    <identifier/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <number fore="#800080"/>
+    <string fore="#CA6500"/>
+    <character fore="#CA6500"/>
+    <class modifiers="bold"/>
+    <module/>
+    <capital/>
+    <data/>
+    <import/>
+    <operator fore="#000080"/>
+    <instance/>
+    <commentline fore="#008000"/>
+    <commentblock fore="#008000"/>
+    <commentblock2 fore="#008000"/>
+    <commentblock3 fore="#008000"/>
+  </haskell>
+  <html>
+    <default fore="#000000" face="Courier New" size="10" modifiers="bold"/>
+    <tag fore="#0000FF"/>
+    <tagunknown/>
+    <attribute fore="#FF0000"/>
+    <attributeunknown/>
+    <number fore="#FF0000"/>
+    <doublestring fore="#8000FF" modifiers="bold"/>
+    <singlestring fore="#8000FF" modifiers="bold"/>
+    <other/>
+    <comment fore="#008000"/>
+    <entity back="#FEFDE0" modifiers="italic"/>
+    <tagend fore="#0000FF"/>
+    <cdata fore="#FF8000"/>
+    <value fore="#FF8000" back="#FEFDE0"/>
+    <sgml_default back="#A6CAF0"/>
+    <_hphp_default fore="#000000" back="#FEFCF5" face="Courier New" size="10"/>
+    <_hphp_hstring fore="#808080"/>
+    <_hphp_simplestring fore="#808080"/>
+    <_hphp_word fore="#0000FF" modifiers="bold"/>
+    <_hphp_number fore="#FF8000"/>
+    <_hphp_variable/>
+    <_hphp_comment fore="#008000"/>
+    <_hphp_commentline fore="#008000"/>
+    <_hphp_hstring_variable fore="#808080" modifiers="bold"/>
+    <_hphp_operator fore="#8000FF"/>
+  </html>
+  <innosetup>
+    <default/>
+    <comment fore="#008000"/>
+    <comment_pascal fore="#008080"/>
+    <identifier/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <keyword_pascal fore="#0080C0" modifiers="bold"/>
+    <keyword_user fore="#8080FF" back="#FFFFCC" modifiers="bold"/>
+    <parameter fore="#FF8000" modifiers="bold"/>
+    <preproc fore="#800000" modifiers="bold"/>
+    <section fore="#000080" modifiers="bold"/>
+    <string_double fore="#808080"/>
+    <string_single fore="#808080"/>
+    <inline_expansion fore="#0000FF" modifiers="bold"/>
+  </innosetup>
+  <kix>
+    <default/>
+    <comment fore="#008000"/>
+    <string1 fore="#808080"/>
+    <string2 fore="#808080"/>
+    <number fore="#FF8000"/>
+    <var/>
+    <macro fore="#8000FF"/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <functions fore="#8000FF"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+  </kix>
+  <lisp>
+    <default/>
+    <comment fore="#008000"/>
+    <number fore="#FF8000"/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <keyword_kw fore="#0000FF" modifiers="bold"/>
+    <symbol fore="#000080" modifiers="bold"/>
+    <string fore="#808080"/>
+    <stringeol modifiers="eol"/>
+    <identifier/>
+    <operator fore="#0080C0" modifiers="bold"/>
+    <special fore="#800000"/>
+    <multi_comment fore="#808080"/>
+  </lisp>
+  <lua>
+    <default/>
+    <comment fore="#008000"/>
+    <commentline fore="#008000"/>
+    <commentdoc fore="#008080"/>
+    <number fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <literalstring fore="#95004A"/>
+    <preprocessor fore="#804000"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <stringeol modifiers="eol"/>
+    <word2 fore="#0080C0" modifiers="bold"/>
+    <word3 fore="#8000FF" modifiers="bold"/>
+    <word4 fore="#000080" modifiers="bold,italic"/>
+    <word5/>
+    <word6/>
+    <word7/>
+    <word8/>
+  </lua>
+  <makefile>
+    <default/>
+    <comment fore="#008000"/>
+    <preprocessor fore="#FFFF00" modifiers="bold"/>
+    <identifier fore="#0000FF"/>
+    <operator modifiers="bold"/>
+    <target fore="#FF0000"/>
+    <ideol modifiers="italic"/>
+  </makefile>
+  <matlab>
+    <default/>
+    <comment fore="#008000"/>
+    <command fore="#8000FF"/>
+    <number fore="#FF8000"/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <doublequotestring fore="#808080"/>
+  </matlab>
+  <nsis>
+    <default/>
+    <comment fore="#008000"/>
+    <stringdq fore="#808080" back="#EEEEEE"/>
+    <stringlq fore="#FFFF80" back="#C0C0C0"/>
+    <stringrq fore="#FFFFFF" back="#C0C0C0"/>
+    <function fore="#0000FF"/>
+    <variable fore="#FF8000"/>
+    <label fore="#FF0000" back="#FFFF80"/>
+    <userdefined fore="#FDFFEC" back="#FF80FF" modifiers="underline"/>
+    <sectiondef fore="#0000FF" modifiers="bold"/>
+    <subsectiondef modifiers="bold"/>
+    <ifdefinedef fore="#808040"/>
+    <macrodef fore="#800000" modifiers="bold"/>
+    <stringvar fore="#FF8000" back="#EFEFEF"/>
+    <number fore="#FF0000"/>
+    <sectiongroup fore="#0000FF" modifiers="bold"/>
+    <pageex fore="#0000FF" modifiers="bold"/>
+    <functiondef fore="#0000FF" modifiers="bold"/>
+    <commentbox fore="#008000"/>
+  </nsis>
+  <pascal>
+    <default/>
+    <identifier/>
+    <comment fore="#008000"/>
+    <comment2 fore="#008000"/>
+    <commentline fore="#008080"/>
+    <preprocessor fore="#804000"/>
+    <preprocessor2 fore="#804000"/>
+    <number fore="#FF8000"/>
+    <hexnumber fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <stringeol modifiers="eol"/>
+    <character fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <asm modifiers="bold"/>
+  </pascal>
+  <perl>
+    <default fore="#FF0000" back="#FFFFFF" face="Courier New" size="10"/>
+    <error fore="#FF80C0" modifiers="bold,italic"/>
+    <commentline fore="#008000"/>
+    <pod fore="#000000"/>
+    <number/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <punctuation fore="#804000"/>
+    <preprocessor fore="#804000"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <scalar fore="#FF8000"/>
+    <array fore="#CF34CF"/>
+    <hash fore="#8080C0"/>
+    <symboltable modifiers="bold"/>
+    <variable_indexer/>
+    <regex fore="#8080FF" back="#F8FEDE"/>
+    <regsubst fore="#8080C0" back="#FFEEEC"/>
+    <longquote fore="#FF8000"/>
+    <backticks fore="#FFFF00" back="#808080" modifiers="bold"/>
+    <datasection fore="#808080"/>
+    <here_delim/>
+    <here_q/>
+    <here_qq/>
+    <here_qx/>
+    <string_q/>
+    <string_qq/>
+    <string_qx/>
+    <string_qr/>
+    <string_qw/>
+    <pod_verb/>
+  </perl>
+  <powershell>
+    <default/>
+    <comment fore="#008000"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <number fore="#FF8000"/>
+    <variable modifiers="bold"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <cmdlet fore="#8000FF"/>
+    <alias fore="#0080FF"/>
+  </powershell>
+  <properties>
+    <default/>
+    <comment fore="#008000"/>
+    <section fore="#8000FF" back="#F2F4FF" modifiers="bold,eol"/>
+    <assignment fore="#FF0000" modifiers="bold"/>
+    <defval fore="#FF0000"/>
+  </properties>
+  <ps>
+    <default/>
+    <comment fore="#008000"/>
+    <dsc_comment fore="#008000"/>
+    <dsc_value fore="#FF0000"/>
+    <number fore="#FF8000"/>
+    <name/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <literal fore="#0080C0" modifiers="bold"/>
+    <immeval fore="#000080" modifiers="bold"/>
+    <paren_array fore="#FF00FF" modifiers="bold"/>
+    <paren_dict fore="#0080FF" modifiers="bold"/>
+    <paren_proc fore="#000080" modifiers="bold"/>
+    <text fore="#808000"/>
+    <hexstring fore="#808080"/>
+    <base85string fore="#808080"/>
+    <badstringchar fore="#804000" modifiers="bold"/>
+  </ps>
+  <python>
+    <default/>
+    <commentline fore="#008000"/>
+    <number fore="#FF0000"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <triple fore="#FF8000"/>
+    <tripledouble fore="#FF8000"/>
+    <classname modifiers="bold"/>
+    <defname fore="#FF00FF"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <commentblock fore="#008000"/>
+    <stringeol modifiers="eol"/>
+    <word2/>
+    <decorator/>
+  </python>
+  <ruby>
+    <default/>
+    <error/>
+    <commentline fore="#008000"/>
+    <pod fore="#004000" back="#C0FFC0"/>
+    <number fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <character fore="#808000"/>
+    <classname fore="#0080C0" modifiers="bold"/>
+    <defname fore="#8080FF" back="#FFFFCC" modifiers="bold"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <regex fore="#0080FF"/>
+    <global fore="#000080" modifiers="bold"/>
+    <symbol/>
+    <module_name fore="#804000" modifiers="bold"/>
+    <instance_var/>
+    <class_var/>
+    <backticks fore="#FFFF00" back="#A08080"/>
+    <datasection fore="#600000" back="#FFF0D8"/>
+    <here_delim/>
+    <here_q/>
+    <here_qq/>
+    <here_qx/>
+    <string_q fore="#808080"/>
+    <string_qq/>
+    <string_qx/>
+    <string_qr/>
+    <string_qw/>
+    <word_demoted/>
+    <stdin/>
+    <stdout/>
+    <stderr/>
+    <upper_bound/>
+  </ruby>
+  <smalltalk>
+    <default/>
+    <string fore="#808080"/>
+    <number fore="#FF8000"/>
+    <comment fore="#008000"/>
+    <symbol fore="#408080" modifiers="bold"/>
+    <binary fore="#000080"/>
+    <bool fore="#8000FF"/>
+    <self fore="#8080FF" back="#FFFFCC" modifiers="bold"/>
+    <super fore="#0080FF" back="#ECFFEA" modifiers="bold"/>
+    <nil fore="#8080C0"/>
+    <global fore="#800000"/>
+    <return fore="#0000FF" modifiers="bold"/>
+    <special fore="#808000"/>
+    <kwsend fore="#0080FF"/>
+    <assign fore="#FF0000"/>
+    <character fore="#808080"/>
+    <spec_sel fore="#FF80C0"/>
+  </smalltalk>
+  <sql>
+    <default/>
+    <comment fore="#008000"/>
+    <commentline fore="#008000"/>
+    <commentdoc fore="#008080"/>
+    <number fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <character fore="#808080"/>
+    <sqlplus/>
+    <sqlplus_prompt/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <sqlplus_comment/>
+    <commentlinedoc fore="#008080"/>
+    <word2/>
+    <commentdockeyword fore="#008080" modifiers="bold"/>
+    <commentdockeyworderror fore="#008080"/>
+    <user1/>
+    <user2/>
+    <user3/>
+    <user4/>
+    <quotedidentifier/>
+  </sql>
+  <tex>
+    <default/>
+    <special fore="#FF8000" modifiers="bold"/>
+    <group fore="#8000FF" modifiers="bold"/>
+    <symbol fore="#800000"/>
+    <command fore="#0000FF" modifiers="bold"/>
+    <text/>
+  </tex>
+  <vb>
+    <default/>
+    <comment fore="#008000"/>
+    <number fore="#FF0000" modifiers="bold"/>
+    <keyword fore="#0000FF"/>
+    <string fore="#808080"/>
+    <preprocessor fore="#FF0000"/>
+    <operator modifiers="bold"/>
+    <identifier/>
+    <date fore="#00FF00"/>
+    <stringeol modifiers="eol"/>
+    <keyword2/>
+    <keyword3/>
+    <keyword4/>
+    <constant/>
+    <asm/>
+    <label/>
+    <error/>
+    <hexnumber/>
+    <binnumber/>
+  </vb>
+  <verilog>
+    <default/>
+    <comment fore="#008000"/>
+    <commentline fore="#008000"/>
+    <commentlinebang fore="#008080"/>
+    <number fore="#FF8000"/>
+    <word fore="#0000FF" modifiers="bold"/>
+    <string fore="#808080"/>
+    <word2 fore="#8000FF"/>
+    <word3/>
+    <preprocessor fore="#804000"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <stringeol modifiers="eol"/>
+    <user/>
+  </verilog>
+  <vhdl>
+    <default/>
+    <comment fore="#008000"/>
+    <commentlinebang/>
+    <number fore="#FF8000"/>
+    <string fore="#808080"/>
+    <operator fore="#000080" modifiers="bold"/>
+    <identifier/>
+    <stringeol modifiers="eol"/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <stdoperator fore="#0080C0" modifiers="bold"/>
+    <attribute fore="#8080FF" back="#FFFFCC" modifiers="bold"/>
+    <stdfunction fore="#0080FF" modifiers="bold"/>
+    <stdpackage fore="#800000"/>
+    <stdtype fore="#8000FF"/>
+    <userword fore="#B5E71F"/>
+  </vhdl>
+  <xml>
+    <default fore="#000000" face="Courier New" size="10" modifiers="bold"/>
+    <tag fore="#0000FF"/>
+    <tagunknown/>
+    <attribute fore="#FF0000"/>
+    <attributeunknown/>
+    <number fore="#FF0000"/>
+    <doublestring fore="#8000FF" modifiers="bold"/>
+    <singlestring fore="#8000FF" modifiers="bold"/>
+    <other/>
+    <comment fore="#008000"/>
+    <entity back="#FEFDE0" modifiers="italic"/>
+    <tagend fore="#0000FF"/>
+    <xmlstart fore="#FF0000" back="#FFFF00"/>
+    <xmlend fore="#FF0000" back="#FFFF00"/>
+    <cdata fore="#FF8000"/>
+    <sgml_default back="#A6CAF0"/>
+  </xml>
+  <yaml>
+    <default/>
+    <comment fore="#008000"/>
+    <identifier fore="#000080" modifiers="bold"/>
+    <keyword fore="#0000FF" modifiers="bold"/>
+    <number fore="#FF8040"/>
+    <reference fore="#804000"/>
+    <document fore="#0000FF"/>
+    <text fore="#808080" modifiers="bold"/>
+    <error fore="#FF0000"/>
+  </yaml>
+</styles>
