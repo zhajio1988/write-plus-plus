@@ -5,9 +5,9 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 
 import os
 import wx
-from lxml import etree as ElementTree
+from xml import etree as ElementTree
+from wx.lib.agw import aui
 
-import aui
 import menu
 import notebook
 import panes

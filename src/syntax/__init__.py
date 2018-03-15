@@ -6,9 +6,8 @@ NOTE: Parts of this package are based on styles from Notepad++
 
 import os
 import wx
-from lxml import etree as ElementTree
-
-import aui
+from wx.lib.agw import aui
+from xml import etree as ElementTree
 
 _ = wx.GetTranslation
 

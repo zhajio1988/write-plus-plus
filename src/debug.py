@@ -7,7 +7,7 @@ NOTE: Parts of this file are based on code from GUI2Exe
 import platform
 import sys
 import traceback
-import urllib2
+import urllib.parse
 import webbrowser
 import wx
 
@@ -36,7 +36,7 @@ def LogError(exception):
 						  wx.VERSION_STRING, ", ".join(wx.PlatformInfo), wx.GetDefaultPyEncoding(),
 						  _version, hasattr(sys, "frozen"))
 		if wx.Platform != "__WXMAC__":
-			message = urllib2.quote(message)
+			message = urllib.parse.quote(message)
 		webbrowser.open("mailto:timothysw@objectmail.com?subject=Write++ Error Report&body=%s" % message.replace("'", ""))
 	elif button == wx.ID_CANCEL:
 		sys.exit(1)

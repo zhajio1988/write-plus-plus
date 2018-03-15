@@ -6,9 +6,8 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 import os
 import webbrowser
 import wx
-from wx import gizmos
-
-import aui
+from wx import adv
+from wx.lib.agw import aui
 
 _ = wx.GetTranslation
 
@@ -225,7 +224,7 @@ class FavoriteManager(wx.Dialog):
 		wx.Dialog.__init__(self, parent, -1, _("Manage Favorites"), style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
 		self._parent = parent
 		
-		self.favorites = gizmos.EditableListBox(self, -1, _("Favorite List\n(e.g., C:\\Users\\Username\\Documents)"))
+		self.favorites = adv.EditableListBox(self, -1, _("Favorite List\n(e.g., C:\\Users\\Username\\Documents)"))
 		self.favorites.SetStrings(parent.filebrowser.favorites)
 		
 		sizer = wx.BoxSizer(wx.VERTICAL)

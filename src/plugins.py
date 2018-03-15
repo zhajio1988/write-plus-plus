@@ -8,8 +8,8 @@ import shutil
 import sys
 import wx
 import zipfile
-from lxml import etree as ElementTree
-from wx.html import EVT_HTML_LINK_CLICKED
+from xml import etree as ElementTree
+from wx import adv, html
 
 _ = wx.GetTranslation
 
@@ -199,7 +199,7 @@ class PluginDialog(wx.Dialog):
 			self.listbox.items.append(text)
 			self.restart.append(root[3].text == "True")
 		self.listbox.SetItemCount(len(self.listbox.items))
-		self.install = wx.HyperlinkCtrl(self, -1, _("Install plugin from file..."), "", style=wx.NO_BORDER | wx.HL_ALIGN_LEFT)
+		self.install = adv.HyperlinkCtrl(self, -1, _("Install plugin from file..."), "", style=wx.NO_BORDER | adv.HL_ALIGN_LEFT)
 		self.close = wx.Button(self, wx.ID_CLOSE)
 		
 		sizer = wx.BoxSizer(wx.VERTICAL)
@@ -210,8 +210,8 @@ class PluginDialog(wx.Dialog):
 		sizer.Add(sizer2, 0, wx.ALL | wx.EXPAND, 5)
 		self.SetSizer(sizer)
 		
-		self.listbox.Bind(EVT_HTML_LINK_CLICKED, self.OnLinkClicked)
-		self.install.Bind(wx.EVT_HYPERLINK, self.OnHyperlink)
+		self.listbox.Bind(html.EVT_HTML_LINK_CLICKED, self.OnLinkClicked)
+		self.install.Bind(adv.EVT_HYPERLINK, self.OnHyperlink)
 		self.close.Bind(wx.EVT_BUTTON, self.OnClose)
 		self.Bind(wx.EVT_CLOSE, self.OnClose)
 	
@@ -403,9 +403,9 @@ class PluginDialog(wx.Dialog):
 	def OnClose(self, event):
 		self.Destroy()
 
-class HtmlListBox(wx.HtmlListBox):
+class HtmlListBox(html.HtmlListBox):
 	def __init__(self, parent):
-		wx.HtmlListBox.__init__(self, parent, -1)
+		html.HtmlListBox.__init__(self, parent, -1)
 		self._parent = parent
 		
 		self.items = []

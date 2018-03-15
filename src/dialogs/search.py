@@ -8,8 +8,8 @@ import os.path
 import re
 import unicodedata
 import wx
+from wx.lib.agw import aui
 
-import aui
 from stc import encodings
 
 _ = wx.GetTranslation

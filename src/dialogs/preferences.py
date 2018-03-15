@@ -5,8 +5,7 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 
 import os.path
 import wx
-
-from aui import AUI_NB_TAB_FIXED_WIDTH
+from wx.lib.agw import aui
 
 _ = wx.GetTranslation
 
@@ -109,7 +108,7 @@ class PreferenceDialog(wx.Dialog):
 			self._parent._app.settings["BackupDir"] = backupdir
 		FixedTabWidth = self.FixedTabWidth.GetValue()
 		if FixedTabWidth:
-			self._parent.notebook.SetAGWWindowStyleFlag(self._parent.notebook.GetAGWWindowStyleFlag() | AUI_NB_TAB_FIXED_WIDTH)
+			self._parent.notebook.SetAGWWindowStyleFlag(self._parent.notebook.GetAGWWindowStyleFlag() | aui.AUI_NB_TAB_FIXED_WIDTH)
 		else:
-			self._parent.notebook.SetAGWWindowStyleFlag(self._parent.notebook.GetAGWWindowStyleFlag() ^ AUI_NB_TAB_FIXED_WIDTH)
+			self._parent.notebook.SetAGWWindowStyleFlag(self._parent.notebook.GetAGWWindowStyleFlag() ^ aui.AUI_NB_TAB_FIXED_WIDTH)
 		self._parent._app.settings["FixedTabWidth"] = FixedTabWidth

@@ -4,8 +4,7 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 """
 
 import wx
-
-import aui
+from wx.lib.agw import aui
 
 class VCPaneManager:
 	def __init__(self, frame, direction):
@@ -211,5 +210,5 @@ class VCPaneManager:
 
 directions = {wx.LEFT:"left", wx.RIGHT:"right", wx.TOP:"top", wx.BOTTOM:"bottom"}
 
-from browser import *
-from results import *
+from panes.browser import *
+from panes.results import *

@@ -7,8 +7,8 @@ NOTE: Parts of this file are based on code from Editra
 import os.path
 import sys
 import wx
+from wx.lib.agw import aui
 
-import aui
 import menu
 
 _ = wx.GetTranslation

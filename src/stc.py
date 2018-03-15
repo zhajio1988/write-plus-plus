@@ -5,7 +5,7 @@ NOTE: Parts of this file are based on code from SPE, Editra, and PythonWin
 """
 
 import codecs
-import cStringIO
+import io
 import os
 import re
 import shutil
@@ -586,7 +586,7 @@ class PrimaryEditor(SecondaryEditor):
 			self.SetText(text2)
 		else:
 			text2 = "\0".join(text2) + "\0"
-			self.AddStyledText(cStringIO.StringIO(text2.encode(self.encoding)).getvalue())
+			self.AddStyledText(io.StringIO(text2.encode(self.encoding)).getvalue())
 		self.SetSavePoint()
 		self.mtime = os.path.getmtime(self.filename)
 		self.readonly = not os.access(self.filename, os.W_OK)

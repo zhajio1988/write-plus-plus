@@ -5,8 +5,7 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 
 import os.path
 import wx
-
-import aui
+from wx.lib.agw import aui
 
 _ = wx.GetTranslation
 

@@ -6,6 +6,7 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 import os.path
 import webbrowser
 import wx
+from wx import adv
 
 _ = wx.GetTranslation
 
@@ -401,14 +402,14 @@ class MenuBar(wx.MenuBar):
 	def OnAbout(self, event):
 		self._frame._app.helper.ShowAboutBox()
 
-class TaskBarIcon(wx.TaskBarIcon):
+class TaskBarIcon(adv.TaskBarIcon):
 	def __init__(self, frame):
-		wx.TaskBarIcon.__init__(self)
+		adv.TaskBarIcon.__init__(self)
 		self._frame = frame
 		
 		self.SetIcon(wx.Icon(os.path.join(frame._app.cwd, "images", "write++-16.png"), wx.BITMAP_TYPE_PNG), frame.GetTitle())
 		
-		self.Bind(wx.EVT_TASKBAR_LEFT_DOWN, self.OnRestore)
+		self.Bind(adv.EVT_TASKBAR_LEFT_DOWN, self.OnRestore)
 
 	def OnRestore(self, event):
 		self._frame.Iconize(False)

@@ -5,8 +5,8 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 
 import os
 import wx
+from wx.lib.agw import aui
 
-import aui
 import stc
 
 _ = wx.GetTranslation
