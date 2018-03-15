@@ -31,6 +31,7 @@ import printing
 
 _version = debug._version = "0.9.9"
 
+
 class FileConfig(configparser.RawConfigParser):
     def __init__(self, app):
         configparser.RawConfigParser.__init__(self)
@@ -38,7 +39,7 @@ class FileConfig(configparser.RawConfigParser):
 
         self.filename = os.path.join(app.userdatadir, "write++.ini")
 
-        self.optionxform = str	# Don't make option names lowercase
+        self.optionxform = str  # Don't make option names lowercase
         if os.path.isfile(self.filename):
             config = open(self.filename, 'r')
             self.readfp(config)
@@ -184,7 +185,7 @@ class FileConfig(configparser.RawConfigParser):
 
 class WritePlusPlus(wx.App):
     def OnInit(self):
-        super(WritePlusPlus, self).__init__()
+        #wx.App.__init__(self)
 
         self.SetAppName("Write++")
         self.checker = wx.SingleInstanceChecker("write++-%s" % wx.GetUserId(), wx.StandardPaths.Get().GetTempDir())
@@ -207,10 +208,8 @@ class WritePlusPlus(wx.App):
                 self.userdatadir = os.path.join(self.cwd, self.userdatadir)
         elif os.path.isfile(os.path.join(self.cwd, "portable.ini")):
             self.userdatadir = self.cwd
-        elif wx.Platform != "__WXGTK__":
-            self.userdatadir = os.path.join(wx.StandardPaths.Get().GetUserDataDir(), "Write++")
         else:
-            self.userdatadir = os.path.join(wx.StandardPaths.Get().GetUserDataDir(), ".write++")
+            self.userdatadir = wx.StandardPaths.Get().GetUserDataDir()
         if not os.path.isdir(self.userdatadir):
             os.makedirs(self.userdatadir)
 
@@ -228,11 +227,14 @@ class WritePlusPlus(wx.App):
         self.plugins = plugins.PluginManager(self)
         self.printer = printing.Printer(self)
 
+        return True
+
+    def PostInit(self):
         self.frames = []
         session = None
         if "--session" in options:
             session = options["--session"]
-            if not os.path.isabs(session):	# Check if path is relative
+            if not os.path.isabs(session):  # Check if path is relative
                 session = os.path.join(app.cwd, session)
         self.NewFrame(session)
         if "--systemtray" in options:
@@ -242,8 +244,6 @@ class WritePlusPlus(wx.App):
                 self.frames[0].OpenFile(arg)
         if self.server:
             self.server.start()
-
-        return True
 
     def MacNewFile(self):
         self.frames[self.active].New()
@@ -299,14 +299,15 @@ class WritePlusPlus(wx.App):
             wx.CallLater(1, self.ExitMainLoop)
 
 def main(restart=False):
-    sys.excepthook = debug.OnError
+    #sys.excepthook = debug.OnError
     global options, args
     if not restart:
         options, args = getopt.getopt(sys.argv[1:], "", ["datadir=", "multiple", "session=", "systemtray"])
     else:
         options, args = getopt.getopt(sys.argv[1:], "", ["datadir=", "multiple"])
     options = dict(options)
-    app = WritePlusPlus(restart)
+    app = WritePlusPlus()#restart)
+    app.PostInit()
     if restart:
         app.frames[0].Plugins()
     app.MainLoop()

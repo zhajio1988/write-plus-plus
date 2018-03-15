@@ -8,7 +8,7 @@ import shutil
 import sys
 import wx
 import zipfile
-from xml import etree as ElementTree
+from lxml import etree as ElementTree
 from wx import adv, html
 
 _ = wx.GetTranslation

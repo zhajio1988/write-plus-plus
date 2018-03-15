@@ -6,7 +6,7 @@ Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
 import os.path
 import webbrowser
 import wx
-from wx import html
+from wx import adv, html
 
 _ = wx.GetTranslation
 
@@ -38,14 +38,14 @@ class HelpSystem(html.HtmlHelpController):
 			event.Skip()
 	
 	def ShowAboutBox(self):
-		info = wx.AboutDialogInfo()
+		info = adv.AboutDialogInfo()
 		info.SetName("Write++")
 		info.SetVersion(self._app.version)
 		info.SetCopyright("Copyright (C) 2011-2013 Timothy Johnson. All rights reserved.")
 		info.SetDescription(_("A text editor that is free, cross-platform, and open-source."))
 		info.SetWebSite("http://writeplusplus.sf.net")
 		info.SetLicense(license)
-		wx.AboutBox(info)
+		adv.AboutBox(info)
 
 license = """This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

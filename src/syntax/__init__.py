@@ -6,8 +6,8 @@ NOTE: Parts of this package are based on styles from Notepad++
 
 import os
 import wx
+from lxml import etree as ElementTree
 from wx.lib.agw import aui
-from xml import etree as ElementTree
 
 _ = wx.GetTranslation
 
@@ -27,7 +27,7 @@ class Styler:
 					element.set("face", "Monospace")
 					element.set("size", "11")
 			fileobj = open(filename, 'w')
-			fileobj.write(ElementTree.tostring(root, encoding="utf-8", xml_declaration=True, pretty_print=True))
+			fileobj.write(ElementTree.tostring(root, encoding="utf-8", xml_declaration=True, pretty_print=True).decode("utf-8"))
 			fileobj.close()
 		self.etree = ElementTree.parse(filename)
 		self.root = self.etree.getroot()

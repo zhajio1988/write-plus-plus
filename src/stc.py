@@ -5,12 +5,12 @@ NOTE: Parts of this file are based on code from SPE, Editra, and PythonWin
 """
 
 import codecs
-import io
 import os
 import re
 import shutil
 import webbrowser
 import wx
+from io import StringIO
 from wx import stc
 
 _ = wx.GetTranslation
@@ -123,7 +123,7 @@ class SecondaryEditor(stc.StyledTextCtrl):
 		caretlineback = "caretlineback" in default
 		self.SetCaretLineVisible(caretlineback)
 		if caretlineback:
-			self.SetCaretLineBack(default["caretlineback"]["back"])
+			self.SetCaretLineBackground(default["caretlineback"]["back"])
 		for style in default:
 			if style != "caretforeground" and style != "caretlineback":
 				self.StyleSetSpec(getattr(stc, "STC_STYLE_%s" % (style.upper())), self._frame.styler.FormatStyleInfo(default[style]))
@@ -528,7 +528,7 @@ class PrimaryEditor(SecondaryEditor):
 		for editor in self._parent.editors:
 			SecondaryEditor.SetLanguage(editor, language, again)
 		self.filetype = None
-		self.image = wx.NullBitmap
+		self.image = wx.Bitmap()
 		if len(extension):
 			filetype = wx.TheMimeTypesManager.GetFileTypeFromExtension(extension)
 			if filetype:
@@ -541,9 +541,9 @@ class PrimaryEditor(SecondaryEditor):
 						self.filetype = description
 				if extension not in (".ani", ".cur", ".ico", ".lnk", ".exe"):	# Extensions with no one icon
 					info = filetype.GetIconInfo()
-					if info and info[0].Ok():
+					if info and info[0].IsOk():
 						x, y = wx.SystemSettings.GetMetric(wx.SYS_SMALLICON_X), wx.SystemSettings.GetMetric(wx.SYS_SMALLICON_Y)
-						self.image = wx.BitmapFromIcon(wx.Icon("%s;%s" % info[1:], wx.BITMAP_TYPE_ICO, x, y))
+						self.image.CopyFromIcon(wx.Icon("%s;%s" % info[1:], wx.BITMAP_TYPE_ICO, x, y))
 			if not self.filetype:
 				self.filetype = _("%s file") % extension[1:].upper()
 		elif not self.filetype:
@@ -586,7 +586,7 @@ class PrimaryEditor(SecondaryEditor):
 			self.SetText(text2)
 		else:
 			text2 = "\0".join(text2) + "\0"
-			self.AddStyledText(io.StringIO(text2.encode(self.encoding)).getvalue())
+			self.AddStyledText(StringIO(text2.encode(self.encoding)).getvalue())
 		self.SetSavePoint()
 		self.mtime = os.path.getmtime(self.filename)
 		self.readonly = not os.access(self.filename, os.W_OK)
