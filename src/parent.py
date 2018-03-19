@@ -242,7 +242,7 @@ class MainFrame(wx.Frame):
                 return
         if os.path.isfile(filename):
             root = ElementTree.parse(filename).getroot()
-            filenames = self.CheckOpenFiles(filter(os.path.isfile, [element.text for element in root]), False)
+            filenames = self.CheckOpenFiles([element.text for element in root if os.path.isfile(element.text)], False)
             tab = int(root.get("tab"))
             if tab >= len(filenames):
                 tab = len(filenames) - 1

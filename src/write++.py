@@ -29,7 +29,7 @@ import ipc
 import parent
 import printing
 
-_version = debug._version = "0.9.9"
+_version = debug._version = "0.8.0"
 
 
 class FileConfig(configparser.RawConfigParser):

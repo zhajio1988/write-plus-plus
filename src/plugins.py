@@ -437,6 +437,6 @@ class PluginDropTarget(wx.FileDropTarget):
 		self._dialog = dialog
 	
 	def OnDropFiles(self, x, y, filenames):
-		filenames = filter(lambda filename: os.path.splitext(filename)[1].lower() == ".wzip", filenames)
+		filenames = [filename for filename in filenames if os.path.splitext(filename)[1].lower() == ".wzip"]
 		self._dialog.InstallPluginFromFile(filenames)
 		return wx.DragCopy

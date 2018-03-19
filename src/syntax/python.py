@@ -61,7 +61,7 @@ def autocomplete(editor, pos, text, mode):
 			autocomplist.sort()
 			if inspect.isclass(component):
 				uninherited = component.__dict__.keys()
-				autocomplist = filter(lambda item: item not in uninherited, autocomplist)
+				autocomplist = [item for item in autocomplist if item not in uninherited]
 				uninherited.sort()
 				autocomplist = uninherited + autocomplist
 			editor.AutoCompShow(0, " ".join(autocomplist))

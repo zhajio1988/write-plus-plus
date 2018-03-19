@@ -201,7 +201,7 @@ class VCPaneManager:
 		self.panes.remove(pane)
 	
 	def GetPanes(self):
-		return filter(lambda name: not name.startswith("~"), self.visible)
+		return [name for name in self.visible if not name.startswith("~")]
 	
 	def GetCurrent(self):
 		if self.autohide:

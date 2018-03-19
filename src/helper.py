@@ -41,9 +41,9 @@ class HelpSystem(html.HtmlHelpController):
 		info = adv.AboutDialogInfo()
 		info.SetName("Write++")
 		info.SetVersion(self._app.version)
-		info.SetCopyright("Copyright (C) 2011-2013 Timothy Johnson. All rights reserved.")
+		info.SetCopyright("Copyright (C) 2011-2018 Timothy Johnson. All rights reserved.")
 		info.SetDescription(_("A text editor that is free, cross-platform, and open-source."))
-		info.SetWebSite("http://writeplusplus.sf.net")
+		info.SetWebSite("https://github.com/t1m0thyj/write-plus-plus")
 		info.SetLicense(license)
 		adv.AboutBox(info)
 
