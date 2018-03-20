@@ -1,6 +1,6 @@
 """
 write++.py - main script for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

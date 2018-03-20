@@ -1,6 +1,6 @@
 """
 lua.py - Lua lexer script for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 """
 
 words = "and break do else elseif end false for function if in local nil not or repeat return then true until while"
@@ -9,27 +9,27 @@ words3 = "abs acos asin atan atan2 ceil cos deg exp floor format frexp gsub ldex
 words4 = "appendto closefile clock coroutine.create coroutine.resume coroutine.status coroutine.wrap coroutine.yield date difftime execute exit flush getenv io.close io.flush io.input io.lines io.open io.output io.read io.tmpfile io.type io.write io.stdin io.stdout io.stderr openfile os.clock os.date os.difftime os.execute os.exit os.getenv os.remove os.rename os.setlocale os.time os.tmpname readfrom remove rename read seek setlocale tmpfile tmpname time writeto write"
 
 def OnInit(editor):
-	editor.SetCodeFolding(True)
-	editor.SetIndentationGuides(True)
-	editor.SetKeyWords(0, words)
-	editor.SetKeyWords(1, words2)
-	editor.SetKeyWords(2, words3)
-	editor.SetKeyWords(3, words4)
-	editor.SetProperty("tab.timmy.whinge.level", "0")
+    editor.SetCodeFolding(True)
+    editor.SetIndentationGuides(True)
+    editor.SetKeyWords(0, words)
+    editor.SetKeyWords(1, words2)
+    editor.SetKeyWords(2, words3)
+    editor.SetKeyWords(3, words4)
+    editor.SetProperty("tab.timmy.whinge.level", "0")
 
 def OnCharAdded(editor):
-	pass
+    pass
 
-def OnNewLine(editor):	
-	line = editor.GetCurrentLine()
-	if line > 0:
-		columns = editor.GetLineIndentation(line - 1)
-		if not editor.GetUseTabs():
-			text = " " * columns
-		else:
-			width = editor.GetIndent()
-			spaces = columns % width
-			columns /= width
-			text = "\t" * columns + " " * spaces
-		if len(text):
-			editor.AddText(text)
+def OnNewLine(editor):
+    line = editor.GetCurrentLine()
+    if line > 0:
+        columns = editor.GetLineIndentation(line - 1)
+        if not editor.GetUseTabs():
+            text = " " * columns
+        else:
+            width = editor.GetIndent()
+            spaces = columns % width
+            columns /= width
+            text = "\t" * columns + " " * spaces
+        if len(text):
+            editor.AddText(text)

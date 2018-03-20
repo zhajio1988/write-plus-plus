@@ -1,6 +1,6 @@
 """
 asm.py - Assembly lexer script for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 """
 
 cpuinstructions = "aaa aad aam aas adc add and arpl bound bsf bsr bt btc btr bts bswap call cbw clc cld cli cmc cmp cmps cmpsb cmpsw cwd clts cdq cmpsd cwde cmpxchg cflush cpuid cmovo cmovno cmovb cmovc cmovnae cmovae cmovnb cmovnc cmove cmovz cmovne cmovnz cmovbe cmovna cmova cmovnbe cmovs cmovns cmovp cmovpe cmovnp cmovpo cmovl cmovnge cmovge cmovnl cmovle cmovng cmovg cmovnle cmpxchg486 cmpxchg8b daa das dec div esc enter emms femms hlt idiv imul in inc int into iret ins insb insw insd iretd iretdf iretf invd invlpg ibts icebp int1 int3 int01 int03 iretw ja jae jb jbe jc jcxz je jg jge jl jle jmp jna jnae jnb jnbe jnc jne jng jnge jnl jnle jno jnp jns jnz jo jp jpe jpo js jz jecxz lahf lds lea les lods lodsb lodsw loop loope loopew loopne loopnew loopnz loopnzw loopw loopz loopzw leave lar lsl lgdt lidt lldt lmsw ltr lfs lgs lodsd loopd looped loopned loopnzd loopzd lss lock loadall loadall286 mov movs movsb movsw mul movsd movsx movzx neg nop not or out outs outsb outsw outsd pop popf push pushf popa pusha pushw popad popfd pushad pushd pushfd popaw popfw pushaw pushfw rcl rcr ret retf retn rol ror rep repe repne repnz repz rdmsr rdpmc rdshr rdtsc rsdc rsldt rsm rsts sahf sal sar sbb scas scasb scasw shl shr stc std sti stos stosb stosw sub sgdt sidt sldt smsw str scasd seta setae setb setbe setc sete setg setge setl setle setna setnae setnb setnbe setnc setne setng setnge setnl setnle setno setnp setns setnz seto setp setpe setpo sets setz shld shrd stosd salc smi smint smintold svdc svldt svts syscall sysenter sysexit sysret test ud0 ud1 ud2 umov verr verw wait wbinvd wrmsr wrshr xchg xlat xlatb xor xadd xbts"
@@ -11,29 +11,29 @@ directiveoperands = "$ $ $$ %0 %1 %2 %3 %4 %5 %6 %7 %8 %9 .bss .data .text ? @b 
 extinstructions = "addpd addps addsd addss andpd andps andnpd andnps cmpeqpd cmpltpd cmplepd cmpunordpd cmpnepd cmpnltpd cmpnlepd cmpordpd cmpeqps cmpltps cmpleps cmpunordps cmpneps cmpnltps cmpnleps cmpordps cmpeqsd cmpltsd cmplesd cmpunordsd cmpnesd cmpnltsd cmpnlesd cmpordsd cmpeqss cmpltss cmpless cmpunordss cmpness cmpnltss cmpnless cmpordss comisd comiss cvtdq2pd cvtdq2ps cvtpd2dq cvtpd2pi cvtpd2ps cvtpi2pd cvtpi2ps cvtps2dq cvtps2pd cvtps2pi cvtss2sd cvtss2si cvtsd2si cvtsd2ss cvtsi2sd cvtsi2ss cvttpd2dq cvttpd2pi cvttps2dq cvttps2pi cvttsd2si cvttss2si divpd divps divsd divss fxrstor fxsave ldmxscr lfence mfence maskmovdqu maskmovdq maxpd maxps paxsd maxss minpd minps minsd minss movapd movaps movdq2q movdqa movdqu movhlps movhpd movhps movd movq movlhps movlpd movlps movmskpd movmskps movntdq movnti movntpd movntps movntq movq2dq movsd movss movupd movups mulpd mulps mulsd mulss orpd orps packssdw packsswb packuswb paddb paddsb paddw paddsw paddd paddsiw paddq paddusb paddusw pand pandn pause paveb pavgb pavgw pavgusb pdistib pextrw pcmpeqb pcmpeqw pcmpeqd pcmpgtb pcmpgtw pcmpgtd pf2id pf2iw pfacc pfadd pfcmpeq pfcmpge pfcmpgt pfmax pfmin pfmul pmachriw pmaddwd pmagw pmaxsw pmaxub pminsw pminub pmovmskb pmulhrwc pmulhriw pmulhrwa pmulhuw pmulhw pmullw pmuludq pmvzb pmvnzb pmvlzb pmvgezb pfnacc pfpnacc por prefetch prefetchw prefetchnta prefetcht0 prefetcht1 prefetcht2 pfrcp pfrcpit1 pfrcpit2 pfrsqit1 pfrsqrt pfsub pfsubr pi2fd pf2iw pinsrw psadbw pshufd pshufhw pshuflw pshufw psllw pslld psllq pslldq psraw psrad psrlw psrld psrlq psrldq psubb psubw psubd psubq psubsb psubsw psubusb psubusw psubsiw pswapd punpckhbw punpckhwd punpckhdq punpckhqdq punpcklbw punpcklwd punpckldq punpcklqdq pxor rcpps rcpss rsqrtps rsqrtss sfence shufpd shufps sqrtpd sqrtps sqrtsd sqrtss stmxcsr subpd subps subsd subss ucomisd ucomiss unpckhpd unpckhps unpcklpd unpcklps xorpd xorps"
 
 def OnInit(editor):
-	editor.SetCodeFolding(False)
-	editor.SetIndentationGuides(False)
-	editor.SetKeyWords(0, cpuinstructions)
-	editor.SetKeyWords(1, mathinstructions)
-	editor.SetKeyWords(2, registers)
-	editor.SetKeyWords(3, directives)
-	editor.SetKeyWords(4, directiveoperands)
-	editor.SetKeyWords(5, extinstructions)
-	editor.SetProperty("tab.timmy.whinge.level", "0")
+    editor.SetCodeFolding(False)
+    editor.SetIndentationGuides(False)
+    editor.SetKeyWords(0, cpuinstructions)
+    editor.SetKeyWords(1, mathinstructions)
+    editor.SetKeyWords(2, registers)
+    editor.SetKeyWords(3, directives)
+    editor.SetKeyWords(4, directiveoperands)
+    editor.SetKeyWords(5, extinstructions)
+    editor.SetProperty("tab.timmy.whinge.level", "0")
 
 def OnCharAdded(editor):
-	pass
+    pass
 
-def OnNewLine(editor):	
-	line = editor.GetCurrentLine()
-	if line > 0:
-		columns = editor.GetLineIndentation(line - 1)
-		if not editor.GetUseTabs():
-			text = " " * columns
-		else:
-			width = editor.GetIndent()
-			spaces = columns % width
-			columns /= width
-			text = "\t" * columns + " " * spaces
-		if len(text):
-			editor.AddText(text)
+def OnNewLine(editor):
+    line = editor.GetCurrentLine()
+    if line > 0:
+        columns = editor.GetLineIndentation(line - 1)
+        if not editor.GetUseTabs():
+            text = " " * columns
+        else:
+            width = editor.GetIndent()
+            spaces = columns % width
+            columns /= width
+            text = "\t" * columns + " " * spaces
+        if len(text):
+            editor.AddText(text)

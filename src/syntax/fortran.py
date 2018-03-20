@@ -1,6 +1,6 @@
 """
 fortran.py - Fortran lexer script for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 """
 
 words = "access action advance allocatable allocate apostrophe assign assignment associate asynchronous backspace bind blank blockdata call case character class close common complex contains continue cycle data deallocate decimal delim default dimension direct do dowhile double doubleprecision else elseif elsewhere encoding end endassociate endblockdata enddo endfile endforall endfunction endif endinterface endmodule endprogram endselect endsubroutine endtype endwhere entry eor equivalence err errmsg exist exit external file flush fmt forall form format formatted function go goto id if implicit in include inout integer inquire intent interface intrinsic iomsg iolength iostat kind len logical module name named namelist nextrec nml none nullify number only open opened operator optional out pad parameter pass pause pending pointer pos position precision print private program protected public quote read readwrite real rec recl recursive result return rewind save select selectcase selecttype sequential sign size stat status stop stream subroutine target then to type unformatted unit use value volatile wait where while write"
@@ -8,26 +8,26 @@ words2 = "abs achar acos acosd adjustl adjustr aimag aimax0 aimin0 aint ajmax0 a
 words3 = "cdabs cdcos cdexp cdlog cdsin cdsqrt cotan cotand dcmplx dconjg dcotan dcotand decode dimag dll_export dll_import doublecomplex dreal dvchk encode find flen flush getarg getcharqq getcl getdat getenv gettim hfix ibchng identifier imag int1 int2 int4 intc intrup invalop iostat_msg isha ishc ishl jfix lacfar locking locnear map nargs nbreak ndperr ndpexc offset ovefl peekcharqq precfill prompt qabs qacos qacosd qasin qasind qatan qatand qatan2 qcmplx qconjg qcos qcosd qcosh qdim qexp qext qextd qfloat qimag qlog qlog10 qmax1 qmin1 qmod qreal qsign qsin qsind qsinh qsqrt qtan qtand qtanh ran rand randu rewrite segment setdat settim system timer undfl unlock union val virtual volatile zabs zcos zexp zlog zsin zsqrt"
 
 def OnInit(editor):
-	editor.SetCodeFolding(True)
-	editor.SetIndentationGuides(True)
-	editor.SetKeyWords(0, words)
-	editor.SetKeyWords(1, words2)
-	editor.SetKeyWords(2, words3)
-	editor.SetProperty("tab.timmy.whinge.level", "0")
+    editor.SetCodeFolding(True)
+    editor.SetIndentationGuides(True)
+    editor.SetKeyWords(0, words)
+    editor.SetKeyWords(1, words2)
+    editor.SetKeyWords(2, words3)
+    editor.SetProperty("tab.timmy.whinge.level", "0")
 
 def OnCharAdded(editor):
-	pass
+    pass
 
-def OnNewLine(editor):	
-	line = editor.GetCurrentLine()
-	if line > 0:
-		columns = editor.GetLineIndentation(line - 1)
-		if not editor.GetUseTabs():
-			text = " " * columns
-		else:
-			width = editor.GetIndent()
-			spaces = columns % width
-			columns /= width
-			text = "\t" * columns + " " * spaces
-		if len(text):
-			editor.AddText(text)
+def OnNewLine(editor):
+    line = editor.GetCurrentLine()
+    if line > 0:
+        columns = editor.GetLineIndentation(line - 1)
+        if not editor.GetUseTabs():
+            text = " " * columns
+        else:
+            width = editor.GetIndent()
+            spaces = columns % width
+            columns /= width
+            text = "\t" * columns + " " * spaces
+        if len(text):
+            editor.AddText(text)

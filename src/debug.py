@@ -1,6 +1,6 @@
 """
 debug.py - error handling functions for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 NOTE: Parts of this file are based on code from GUI2Exe
 """
 
@@ -14,34 +14,34 @@ import wx
 _ = wx.GetTranslation
 
 def OnError(*exception):
-	wx.CallAfter(LogError, exception)
+    wx.CallAfter(LogError, exception)
 
 def LogError(exception):
-	global error
-	if error:
-		return
-	error = True
-	details = "".join(traceback.format_exception(*exception))
-	dialog = wx.MessageDialog(None, _("An error has occurred in the application."), _("Error"), wx.ICON_ERROR | wx.YES_NO | wx.CANCEL)
-	##dialog.SetExtendedMessage(details)
-	##dialog.SetYesNoCancelLabels(_("Report"), _("Ignore"), _("Abort"))
-	button = dialog.ShowModal()
-	if button == wx.ID_YES:
-		mac = ""
-		if sys.platform == "darwin":
-			mac = "\n    Mac version: " + platform.mac_ver()[0]
-		message = text % ("*" * 40, "*" * 40, details, "*" * 40,
-						  wx.GetOsDescription(), mac, platform.architecture()[0], platform.machine(), sys.byteorder,
-						  sys.version, sys.getdefaultencoding(), sys.getfilesystemencoding(),
-						  wx.VERSION_STRING, ", ".join(wx.PlatformInfo), wx.GetDefaultPyEncoding(),
-						  _version, hasattr(sys, "frozen"))
-		if wx.Platform != "__WXMAC__":
-			message = urllib.parse.quote(message)
-		webbrowser.open("mailto:timothysw@objectmail.com?subject=Write++ Error Report&body=%s" % message.replace("'", ""))
-	elif button == wx.ID_CANCEL:
-		sys.exit(1)
-	dialog.Destroy()
-	error = False
+    global error
+    if error:
+        return
+    error = True
+    details = "".join(traceback.format_exception(*exception))
+    dialog = wx.MessageDialog(None, _("An error has occurred in the application."), _("Error"), wx.ICON_ERROR | wx.YES_NO | wx.CANCEL)
+    ##dialog.SetExtendedMessage(details)
+    ##dialog.SetYesNoCancelLabels(_("Report"), _("Ignore"), _("Abort"))
+    button = dialog.ShowModal()
+    if button == wx.ID_YES:
+        mac = ""
+        if sys.platform == "darwin":
+            mac = "\n    Mac version: " + platform.mac_ver()[0]
+        message = text % ("*" * 40, "*" * 40, details, "*" * 40,
+                          wx.GetOsDescription(), mac, platform.architecture()[0], platform.machine(), sys.byteorder,
+                          sys.version, sys.getdefaultencoding(), sys.getfilesystemencoding(),
+                          wx.VERSION_STRING, ", ".join(wx.PlatformInfo), wx.GetDefaultPyEncoding(),
+                          _version, hasattr(sys, "frozen"))
+        if wx.Platform != "__WXMAC__":
+            message = urllib.parse.quote(message)
+        webbrowser.open("mailto:pythoneer@outlook.com?subject=Write++ Error Report&body=%s" % message.replace("'", ""))
+    elif button == wx.ID_CANCEL:
+        sys.exit(1)
+    dialog.Destroy()
+    error = False
 
 error = False
 text = """Please explain what you were doing in Write++ when the error occurred.

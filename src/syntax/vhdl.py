@@ -1,6 +1,6 @@
 """
 vhdl.py - VHDL lexer script for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 """
 
 keywords = "access after alias all architecture array assert attribute begin block body buffer bus case component configuration constant disconnect downto else elsif end entity exit file for function generate generic group guarded if impure in inertial inout is label library linkage literal loop map new next null of on open others out package port postponed procedure process pure range record register reject report return select severity shared signal subtype then to transport type unaffected units until use variable wait when while with"
@@ -11,29 +11,29 @@ stdpackages = "ieee math_complex math_real numeric_bit numeric_std std standard 
 stdtypes = "boolean bit bit_vector character delay_length file_open_kind file_open_status integer line natural positive real severity_level string side std_ulogic std_ulogic_vector std_logic std_logic_vector signed time text UX01 UX01Z unsigned width X01 X01Z"
 
 def OnInit(editor):
-	editor.SetCodeFolding(False)
-	editor.SetIndentationGuides(False)
-	editor.SetKeyWords(0, keywords)
-	editor.SetKeyWords(1, stdoperators)
-	editor.SetKeyWords(2, attributes)
-	editor.SetKeyWords(3, stdfunctions)
-	editor.SetKeyWords(4, stdpackages)
-	editor.SetKeyWords(5, stdtypes)
-	editor.SetProperty("tab.timmy.whinge.level", "0")
+    editor.SetCodeFolding(False)
+    editor.SetIndentationGuides(False)
+    editor.SetKeyWords(0, keywords)
+    editor.SetKeyWords(1, stdoperators)
+    editor.SetKeyWords(2, attributes)
+    editor.SetKeyWords(3, stdfunctions)
+    editor.SetKeyWords(4, stdpackages)
+    editor.SetKeyWords(5, stdtypes)
+    editor.SetProperty("tab.timmy.whinge.level", "0")
 
 def OnCharAdded(editor):
-	pass
+    pass
 
-def OnNewLine(editor):	
-	line = editor.GetCurrentLine()
-	if line > 0:
-		columns = editor.GetLineIndentation(line - 1)
-		if not editor.GetUseTabs():
-			text = " " * columns
-		else:
-			width = editor.GetIndent()
-			spaces = columns % width
-			columns /= width
-			text = "\t" * columns + " " * spaces
-		if len(text):
-			editor.AddText(text)
+def OnNewLine(editor):
+    line = editor.GetCurrentLine()
+    if line > 0:
+        columns = editor.GetLineIndentation(line - 1)
+        if not editor.GetUseTabs():
+            text = " " * columns
+        else:
+            width = editor.GetIndent()
+            spaces = columns % width
+            columns /= width
+            text = "\t" * columns + " " * spaces
+        if len(text):
+            editor.AddText(text)

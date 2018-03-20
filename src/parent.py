@@ -1,6 +1,6 @@
 """
 parent.py - parent frame class for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 """
 
 import os

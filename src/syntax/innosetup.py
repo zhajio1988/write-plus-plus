@@ -1,6 +1,6 @@
 """
 innosetup.py - Inno Setup lexer script for Write++
-Copyright (C) 2013 Timothy Johnson <timothysw@objectmail.com>
+Copyright (C) 2013 Timothy Johnson <pythoneer@outlook.com>
 """
 
 from wx import stc
@@ -13,34 +13,34 @@ keywords_pascal = "begin break case const continue do downto else end except fin
 keywords_user = ""
 
 def OnInit(editor):
-	editor.SetIndent(2)
-	editor.SetUseTabs(False)
-	editor.SetTabWidth(2)
-	editor.SetCodeFolding(False)
-	editor.SetIndentationGuides(True)
-	editor.SetKeyWords(0, sections)
-	editor.SetKeyWords(1, keywords)
-	editor.SetKeyWords(2, parameters)
-	editor.SetKeyWords(3, preprocs)
-	editor.SetKeyWords(4, keywords_pascal)
-	editor.SetKeyWords(5, keywords_user)
-	editor.SetProperty("tab.timmy.whinge.level", "0")
-	for style in (stc.STC_INNO_KEYWORD, stc.STC_INNO_KEYWORD_PASCAL, stc.STC_INNO_KEYWORD_USER, stc.STC_INNO_PARAMETER, stc.STC_INNO_PREPROC, stc.STC_INNO_SECTION):
-		editor.StyleSetCase(style, stc.STC_CASE_MIXED)
+    editor.SetIndent(2)
+    editor.SetUseTabs(False)
+    editor.SetTabWidth(2)
+    editor.SetCodeFolding(False)
+    editor.SetIndentationGuides(True)
+    editor.SetKeyWords(0, sections)
+    editor.SetKeyWords(1, keywords)
+    editor.SetKeyWords(2, parameters)
+    editor.SetKeyWords(3, preprocs)
+    editor.SetKeyWords(4, keywords_pascal)
+    editor.SetKeyWords(5, keywords_user)
+    editor.SetProperty("tab.timmy.whinge.level", "0")
+    for style in (stc.STC_INNO_KEYWORD, stc.STC_INNO_KEYWORD_PASCAL, stc.STC_INNO_KEYWORD_USER, stc.STC_INNO_PARAMETER, stc.STC_INNO_PREPROC, stc.STC_INNO_SECTION):
+        editor.StyleSetCase(style, stc.STC_CASE_MIXED)
 
 def OnCharAdded(editor):
-	pass
+    pass
 
 def OnNewLine(editor):
-	line = editor.GetCurrentLine()
-	if line > 0:
-		columns = editor.GetLineIndentation(line - 1)
-		if not editor.GetUseTabs():
-			text = " " * columns
-		else:
-			width = editor.GetIndent()
-			spaces = columns % width
-			columns /= width
-			text = "\t" * columns + " " * spaces
-		if len(text):
-			editor.AddText(text)
+    line = editor.GetCurrentLine()
+    if line > 0:
+        columns = editor.GetLineIndentation(line - 1)
+        if not editor.GetUseTabs():
+            text = " " * columns
+        else:
+            width = editor.GetIndent()
+            spaces = columns % width
+            columns /= width
+            text = "\t" * columns + " " * spaces
+        if len(text):
+            editor.AddText(text)

@@ -21,7 +21,7 @@ As a text editor, Write++ has numerous features:
   - Word wrap
   - Zoom in/out
 
-Please report any bugs to <timothysw@objectmail.com>.
+Please report any bugs to <pythoneer@outlook.com>.
 
 Kind regards,
 	Timothy Johnson
