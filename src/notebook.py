@@ -49,12 +49,12 @@ class MainNotebook(aui.AuiNotebook):
                 hide = True
             elif self.tooltip != page.editors[0].filename:
                 self.tooltip = page.editors[0].filename
-                tabctrl.SetToolTipString(self.tooltip)
+                tabctrl.SetToolTip(wx.ToolTip(self.tooltip))
         elif self.tooltip:
             hide = True
         if hide:
             self.tooltip = None
-            tabctrl.SetToolTipString("")
+            tabctrl.SetToolTip(None)
         event.Skip()
 
     def OnPageClose(self, event):

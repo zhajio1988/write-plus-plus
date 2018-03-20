@@ -431,7 +431,7 @@ class TaskBarIcon(adv.TaskBarIcon):
         self.OnRestore(event)
 
     def OnOpen(self, event):
-        dialog = wx.FileDialog(self._frame, _("Open"), os.path.dirname(self._frame.GetEditor().filename), wildcard=self._frame.filetypes, style=wx.OPEN | wx.MULTIPLE)
+        dialog = wx.FileDialog(self._frame, _("Open"), os.path.dirname(self._frame.GetEditor().filename), wildcard=self._frame.filetypes, style=wx.FD_OPEN | wx.FD_MULTIPLE)
         if dialog.ShowModal() == wx.ID_OK:
             self._frame.OpenFiles(dialog.GetPaths())
             self._frame.notebook.SetSelection(self._frame.notebook.GetPageCount() - 1)

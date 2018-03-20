@@ -143,7 +143,9 @@ class FileBrowser(wx.Panel):
         ID_ADD = wx.NewId()
         menu.Append(ID_ADD, _("Add to Favorites"))
         self._parent.Bind(wx.EVT_MENU, self.OnAdd, id=ID_ADD)
-        if not len(self.dirctrl.GetPaths()):
+        paths = []
+        self.dirctrl.GetPaths(paths)
+        if not len(paths):
             menu.Enable(ID_ADD, False)
         ID_MANAGE = wx.NewId()
         menu.Append(ID_MANAGE, _("Manage Favorites..."))
@@ -180,15 +182,19 @@ class FileBrowser(wx.Panel):
         self.dirctrl.SelectPath(path)
 
     def OnBeginLabelEdit(self, event):
-        self.rename = self.dirctrl.GetPaths()[0]
+        paths = []
+        self.dirctrl.GetPaths(paths)
+        self.rename = paths[0]
 
     def OnEndLabelEdit(self, event):
         if not event.IsEditCancelled():
             os.rename(self.rename, os.path.join(os.path.split(self.rename)[0], event.GetLabel()))
 
     def OnItemActivated(self, event):
+        paths = []
+        self.dirctrl.GetPaths(paths)
         filenames = []
-        for path in self.dirctrl.GetPaths():
+        for path in paths:
             if os.path.isfile(path):
                 filenames.append(path)
         if len(filenames):
@@ -196,9 +202,10 @@ class FileBrowser(wx.Panel):
         event.Skip()
 
     def OnItemMiddleClick(self, event):
-        path = self.dirctrl.GetPaths()[0]
-        if os.path.isdir(path):
-            webbrowser.open(path)
+        paths = []
+        self.dirctrl.GetPaths(paths)
+        if os.path.isdir(paths[0]):
+            webbrowser.open(paths[0])
 
     def OnSelChanged(self, event):
         path = self.dirctrl.GetPath()

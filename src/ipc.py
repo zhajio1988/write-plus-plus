@@ -43,10 +43,10 @@ class IPCServer(threading.Thread):
             client, address = self.socket.accept()
             if not self.running:
                 break
-            args = [client.recv(4096)]
+            args = [client.recv(4096).decode()]
             start = time.time()
             while len(args[-1]) == 4096 and time.time() < start + 2:
-                args.append(client.recv(4096))
+                args.append(client.recv(4096).decode())
             args = "".join(args).split("\0")
             if args == [""]:
                 args = []
@@ -72,11 +72,12 @@ class IPCServer(threading.Thread):
         self.running = False
         transmit([])
 
+
 def transmit(args):
     try:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect(("localhost", IPCServer.port))
-        client.send("\0".join(args))
+        client.send("\0".join(args).encode())
         client.shutdown(socket.SHUT_RDWR)
         client.close()
     except socket.error:

@@ -59,9 +59,9 @@ class FileConfig(configparser.RawConfigParser):
                     "ShowHidden":False, "UpdatePath":True, "FilterIndex":0,
                     "FavoriteList":[], "SelectedPaths":[]}
         if self.has_option("Main", "WindowPos"):
-            settings["WindowPos"] = map(int, self.getunicode("Main", "WindowPos").split(","))
+            settings["WindowPos"] = [int(i) for i in self.get("Main", "WindowPos").split(",")]
         if self.has_option("Main", "WindowSize"):
-            settings["WindowSize"] = map(int, self.getunicode("Main", "WindowSize").split(","))
+            settings["WindowSize"] = [int(i) for i in self.get("Main", "WindowSize").split(",")]
         if not (0 - settings["WindowSize"][0] < settings["WindowPos"][0] < display[0] and 0 - settings["WindowSize"][1] < settings["WindowPos"][1] < display[1]):
             settings["WindowPos"] = wx.DefaultPosition
             settings["WindowSize"] = best
@@ -69,7 +69,7 @@ class FileConfig(configparser.RawConfigParser):
             if self.has_option("Main", option):
                 settings[option] = self.getboolean("Main", option)
         if self.has_option("Main", "SessionFile"):
-            settings["SessionFile"] = self.getunicode("Main", "SessionFile")
+            settings["SessionFile"] = self.get("Main", "SessionFile")
         if self.has_section("RecentFiles"):
             settings["RecentFiles"] = self.getlist("RecentFiles")
         if self.has_section("Plugins"):
@@ -80,17 +80,17 @@ class FileConfig(configparser.RawConfigParser):
         if self.has_option("Editor", "BackupType"):
             settings["BackupType"] = self.getint("Editor", "BackupType")
         if self.has_option("Editor", "BackupDir"):
-            settings["BackupDir"] = self.getunicode("Editor", "BackupDir")
+            settings["BackupDir"] = self.get("Editor", "BackupDir")
         for direction in ("Left", "Right", "Top", "Bottom"):
             docked = "%sDocked" % direction
             if self.has_option("Panes", "%s" % docked):
-                settings[docked] = self.getunicode("Panes", docked).split(";")
+                settings[docked] = self.get("Panes", docked).split(";")
             active = "%sActive" % direction
             if self.has_option("Panes", active):
                 settings[active] = self.getint("Panes", active)
         for option in ("QuickFind", "LastFind", "LastReplace", "LastFilter"):
             if self.has_option("Search", option):
-                settings[option] = self.getunicode("Search", option)
+                settings[option] = self.get("Search", option)
         if self.has_option("Search", "FilterExclude"):
             settings["FilterExclude"] = self.getboolean("Search", "FilterExclude")
         if self.has_section("Search\\FindHistory"):
@@ -111,9 +111,6 @@ class FileConfig(configparser.RawConfigParser):
             settings["SelectedPaths"] = self.getlist("Browser", "SelectedPaths")
         return settings
 
-    def getunicode(self, section, option):
-        return self.get(section, option).decode("utf_8")
-
     def getlist(self, section, option=None):
         if option:
             section = "%s\\%s" % (section, option)
@@ -121,7 +118,7 @@ class FileConfig(configparser.RawConfigParser):
         sequence = []
         i = 1
         while self.has_option(section, option):
-            sequence.append(self.getunicode(section, option))
+            sequence.append(self.get(section, option))
             i += 1
             option = "Item%d" % i
         return sequence
@@ -129,8 +126,8 @@ class FileConfig(configparser.RawConfigParser):
     def Save(self, frame):
         if not self.has_section("Main"):
             self.add_section("Main")
-        self.set("Main", "WindowPos", ",".join(map(str, frame.rect.GetPosition())))
-        self.set("Main", "WindowSize", ",".join(map(str, frame.rect.GetSize())))
+        self.set("Main", "WindowPos", ",".join([str(i) for i in frame.rect.GetPosition()]))
+        self.set("Main", "WindowSize", ",".join([str(i) for i in frame.rect.GetSize()]))
         self.set("Main", "MaximizeState", str(frame.IsMaximized()))
         self.set("Main", "MinimizeToTray", str(self._app.settings["MinimizeToTray"]))
         if frame.session:
@@ -170,7 +167,9 @@ class FileConfig(configparser.RawConfigParser):
         self.set("Browser", "UpdatePath", str(self._app.settings["UpdatePath"]))
         self.set("Browser", "FilterIndex", str(frame.filebrowser.dirctrl.GetFilterIndex()))
         self.setlist("Browser", "FavoriteList", frame.filebrowser.favorites)
-        self.setlist("Browser", "SelectedPaths", frame.filebrowser.dirctrl.GetPaths())
+        paths = []
+        frame.filebrowser.dirctrl.GetPaths(paths)
+        self.setlist("Browser", "SelectedPaths", paths)
         config = open(self.filename, 'w')
         self.write(config)
         config.close()

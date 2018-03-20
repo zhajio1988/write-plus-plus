@@ -28,7 +28,7 @@ class PluginManager:
         if len(self.names) > 1:
             info = zip(self.names, self.enabled)
             info.sort(key=lambda item: (not item[1], item[0]))  # Sort plugins by enabled state, then by name
-            self.names, self.enabled = map(list, zip(*info))
+            self.names, self.enabled = [list(item) for item in zip(*info)]
 
         plugindir = os.path.join(app.userdatadir, "plugins")
         if not os.path.isdir(plugindir):
@@ -395,7 +395,7 @@ class PluginDialog(wx.Dialog):
                 item[0].close()
 
     def OnHyperlink(self, event):
-        dialog = wx.FileDialog(self._parent, _("Install plugin from file..."), os.path.join(self._parent._app.userdatadir, "plugins"), wildcard=_("Write++ Plugins (*.wzip)|*.wzip"), style=wx.OPEN | wx.MULTIPLE)
+        dialog = wx.FileDialog(self._parent, _("Install plugin from file..."), os.path.join(self._parent._app.userdatadir, "plugins"), wildcard=_("Write++ Plugins (*.wzip)|*.wzip"), style=wx.FD_OPEN | wx.FD_MULTIPLE)
         if dialog.ShowModal() == wx.ID_OK:
             self.InstallPluginFromFile(dialog.GetPaths())
         dialog.Destroy()

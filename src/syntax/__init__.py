@@ -76,6 +76,7 @@ class Styler:
             spec.append(info["modifiers"])
         return ",".join(spec)
 
+
 def ChooseLanguage(frame):
     dialog = wx.SingleChoiceDialog(frame, _("Select a language:"), _("Set Language"), names)
     language = frame.GetEditor().language
@@ -92,6 +93,7 @@ def ChooseLanguage(frame):
             language = styles[language]
     dialog.Destroy()
     return language
+
 
 class StyleEditor(wx.Dialog):
     def __init__(self, parent):
@@ -208,7 +210,7 @@ class StyleEditor(wx.Dialog):
     def SetLexer(self, lexer):
         self.styles.Clear()
         self.styles.Append("Default", "default")
-        styles2 = self._parent.styler.GetStylesInfo(lexer, False).keys()
+        styles2 = list(self._parent.styler.GetStylesInfo(lexer, False).keys())
         styles2.remove("default")
         styles2.sort()
         for style in styles2:

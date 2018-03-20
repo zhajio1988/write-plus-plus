@@ -114,7 +114,7 @@ class ResultsPane(wx.Panel):
             self.Load(self.results)
 
     def OnSave(self, event):
-        dialog = wx.FileDialog(self._parent, _("Save Find Results"), os.path.dirname(self._parent.editor.filename), "%s.txt" % self._parent.aui.GetPane(self).caption, _("Write++ Find Results (*.txt)|*.txt"), wx.SAVE | wx.OVERWRITE_PROMPT)
+        dialog = wx.FileDialog(self._parent, _("Save Find Results"), os.path.dirname(self._parent.editor.filename), "%s.txt" % self._parent.aui.GetPane(self).caption, _("Write++ Find Results (*.txt)|*.txt"), wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
         if dialog.ShowModal() == wx.ID_OK:
             fileobj = open(dialog.GetPath(), 'w')
             node, cookie = self.tree.GetFirstChild(self.root)

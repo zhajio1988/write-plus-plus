@@ -59,7 +59,7 @@ class MainFrame(wx.Frame):
 
         self.aui = aui.AuiManager(self, aui.AUI_MGR_DEFAULT | aui.AUI_MGR_USE_NATIVE_MINIFRAMES)
         dockart = self.aui.GetArtProvider()
-        dockart._inactive_minimize_bitmap = wx.ImageFromBitmap(dockart._inactive_pin_bitmap).Rotate90().ConvertToBitmap()
+        dockart._inactive_minimize_bitmap = dockart._inactive_pin_bitmap.ConvertToImage().Rotate90().ConvertToBitmap()
         dockart.SetFont(aui.AUI_DOCKART_CAPTION_FONT, self.GetFont())
 
         self.menubar = menu.MenuBar(self)
@@ -163,7 +163,7 @@ class MainFrame(wx.Frame):
 
     def OpenFiles(self, filenames=[], select=True, index=-1):
         if not len(filenames):
-            dialog = wx.FileDialog(self, defaultDir=os.path.dirname(self.GetEditor().filename), wildcard=self.filetypes, style=wx.OPEN | wx.MULTIPLE)
+            dialog = wx.FileDialog(self, defaultDir=os.path.dirname(self.GetEditor().filename), wildcard=self.filetypes, style=wx.FD_OPEN | wx.FD_MULTIPLE)
             if dialog.ShowModal() == wx.ID_OK:
                 filenames = dialog.GetPaths()
             dialog.Destroy()
@@ -234,7 +234,7 @@ class MainFrame(wx.Frame):
 
     def LoadSession(self, filename=None):
         if not filename:
-            dialog = wx.FileDialog(self, _("Load Session"), os.path.dirname(self.session), wildcard=_("Write++ Sessions (*.write++)|*.write++"), style=wx.OPEN)
+            dialog = wx.FileDialog(self, _("Load Session"), os.path.dirname(self.session), wildcard=_("Write++ Sessions (*.write++)|*.write++"), style=wx.FD_OPEN)
             if dialog.ShowModal() == wx.ID_OK:
                 filename = dialog.GetPath()
             dialog.Destroy()
@@ -274,7 +274,7 @@ class MainFrame(wx.Frame):
 
     def SaveSession(self, filename=None):
         if not filename:
-            dialog = wx.FileDialog(self, _("Save Session"), os.path.dirname(self.session), os.path.split(self.session)[1], _("Write++ Sessions (*.write++)|*.write++"), wx.SAVE | wx.OVERWRITE_PROMPT)
+            dialog = wx.FileDialog(self, _("Save Session"), os.path.dirname(self.session), os.path.split(self.session)[1], _("Write++ Sessions (*.write++)|*.write++"), wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
             if dialog.ShowModal() == wx.ID_OK:
                 filename = dialog.GetPath()
             dialog.Destroy()
@@ -370,9 +370,9 @@ class MainFrame(wx.Frame):
                             continue
                 tab += 1
             self._app.active = self._app.frames.index(self)
-        elif hasattr(self.notebook, "GetPageCount") and self.notebook.GetPageCount() > 0:   # Ignore this event if frame is going to be closed
-            for editor in self.notebook.GetCurrentPage().editors:
-                editor.Cancel()
+        #elif hasattr(self.notebook, "GetPageCount") and self.notebook.GetPageCount() > 0:   # Ignore this event if frame is going to be closed
+        #    for editor in self.notebook.GetCurrentPage().editors:
+        #        editor.Cancel()
         event.Skip()
 
     def OnMove(self, event):
@@ -425,41 +425,42 @@ class MainFrame(wx.Frame):
         self.aui.UnInit()
         self._app.CloseFrame(self)
 
-filters = map(_, ("All Files (*.*)|*.*", "Plain Text (*.txt)|*.txt",
-                  "Flash ActionScript (*.as;*.mx)|*.as;*.mx",
-                  "Ada (*.ada;*.ads;*.adb)|*.ada;*.ads;*.adb",
-                  "Assembly Language Source (*.asm)|*.asm",
-                  "AutoIt (*.au3)|*.au3",
-                  "Bash Shell Script (*.bsh;*.sh)|*.bsh;*.sh",
-                  "Batch (*.bat;*.cmd;*.nt)|*.bat;*.cmd;*.nt",
-                  "C Source (*.c)|*.c",
-                  "CAML (*.ml;*.mli;*.sml;*.thy)|*.ml;*.mli;*.sml;*.thy",
-                  "CMake (*.cmake)|*.cmake",
-                  "C++ Source (*.h;*.hpp;*.hxx;*.cpp;*.cxx;*.cc)|*.h;*.hpp;*.hxx;*.cpp;*.cxx;*.cc",
-                  "C# Source (*.cs)|*.cs", "C-Shell Script (*.csh)|*.csh",
-                  "Cascading Style Sheet (*.css)|*.css",
-                  "D programming language (*.d)|*.d",
-                  "Diff (*.diff;*.patch)|*.diff;*.patch",
-                  "Fortran Source (*.f;*.for;*.f90;*.f95;*.f2k)|*.f;*.for;*.f90;*.f95;*.f2k",
-                  "Haskell (*.hs;*.lhs;*.as;*.las)|*.hs;*.lhs;*.as;*.las",
-                  "HTML (*.html;*.htm;*.shtml;*.shtm;*.xhtml;*.hta)|*.html;*.htm;*.shtml;*.shtm;*.xhtml;*.hta",
-                  "Microsoft INI (*.ini;*.inf;*.reg;*.url)|*.ini;*.inf;*.reg;*.url",
-                  "Inno Setup Script (*.iss)|*.iss",
-                  "Java Source (*.java)|*.java", "JavaScript (*.js)|*.js",
-                  "KiXtart Script (*.kix)|*.kix",
-                  "Korn Shell Script (*.ksh)|*.ksh", "LaTeX (*.tex)|*.tex",
-                  "Lisp (*.lsp;*.lisp)|*.lsp;*.lisp", "Lua (*.lua)|*.lua",
-                  "Make (*.mak)|*.mak", "MatLab (*.m)|*.m",
-                  "NSIS Script (*.nsi;*.nsh)|*.nsi;*.nsh",
-                  "Pascal (*.pas;*.inc)|*.pas;*.inc",
-                  "Perl (*.pl;*.pm;*.plx)|*.pl;*.pm;*.plx",
-                  "PHP (*.php;*.php3;*.phtml)|*.php;*.php3;*.phtml",
-                  "Postscript (*.ps)|*.ps", "Windows PowerShell (*.ps1)|*.ps1",
-                  "Properties (*.properties)|*.properties",
-                  "Python (*.py;*.pyw)|*.py;*.pyw",
-                  "Ruby (*.rb;*.rbw)|*.rb;*.rbw", "SQL (*.sql)|*.sql",
-                  "Smalltalk (*.st)|*.st",
-                  "Visual Basic (*.vb;*.vbs)|*.vb;*.vbs", "Verilog (*.v)|*.v",
-                  "VHDL (*.vhd;*.vhdl)|*.vhd;*.vhdl",
-                  "XML (*.xml;*.xsml;*.xsl;*.xsd;*.kml;*.wsdl)|*.xml;*.xsml;*.xsl;*.xsd;*.kml;*.wsdl",
-                  "YAML (*.yml)|*.yml"))
+
+filters = [_(string) for string in ("All Files (*.*)|*.*", "Plain Text (*.txt)|*.txt",
+    "Flash ActionScript (*.as;*.mx)|*.as;*.mx",
+    "Ada (*.ada;*.ads;*.adb)|*.ada;*.ads;*.adb",
+    "Assembly Language Source (*.asm)|*.asm",
+    "AutoIt (*.au3)|*.au3",
+    "Bash Shell Script (*.bsh;*.sh)|*.bsh;*.sh",
+    "Batch (*.bat;*.cmd;*.nt)|*.bat;*.cmd;*.nt",
+    "C Source (*.c)|*.c",
+    "CAML (*.ml;*.mli;*.sml;*.thy)|*.ml;*.mli;*.sml;*.thy",
+    "CMake (*.cmake)|*.cmake",
+    "C++ Source (*.h;*.hpp;*.hxx;*.cpp;*.cxx;*.cc)|*.h;*.hpp;*.hxx;*.cpp;*.cxx;*.cc",
+    "C# Source (*.cs)|*.cs", "C-Shell Script (*.csh)|*.csh",
+    "Cascading Style Sheet (*.css)|*.css",
+    "D programming language (*.d)|*.d",
+    "Diff (*.diff;*.patch)|*.diff;*.patch",
+    "Fortran Source (*.f;*.for;*.f90;*.f95;*.f2k)|*.f;*.for;*.f90;*.f95;*.f2k",
+    "Haskell (*.hs;*.lhs;*.as;*.las)|*.hs;*.lhs;*.as;*.las",
+    "HTML (*.html;*.htm;*.shtml;*.shtm;*.xhtml;*.hta)|*.html;*.htm;*.shtml;*.shtm;*.xhtml;*.hta",
+    "Microsoft INI (*.ini;*.inf;*.reg;*.url)|*.ini;*.inf;*.reg;*.url",
+    "Inno Setup Script (*.iss)|*.iss",
+    "Java Source (*.java)|*.java", "JavaScript (*.js)|*.js",
+    "KiXtart Script (*.kix)|*.kix",
+    "Korn Shell Script (*.ksh)|*.ksh", "LaTeX (*.tex)|*.tex",
+    "Lisp (*.lsp;*.lisp)|*.lsp;*.lisp", "Lua (*.lua)|*.lua",
+    "Make (*.mak)|*.mak", "MatLab (*.m)|*.m",
+    "NSIS Script (*.nsi;*.nsh)|*.nsi;*.nsh",
+    "Pascal (*.pas;*.inc)|*.pas;*.inc",
+    "Perl (*.pl;*.pm;*.plx)|*.pl;*.pm;*.plx",
+    "PHP (*.php;*.php3;*.phtml)|*.php;*.php3;*.phtml",
+    "Postscript (*.ps)|*.ps", "Windows PowerShell (*.ps1)|*.ps1",
+    "Properties (*.properties)|*.properties",
+    "Python (*.py;*.pyw)|*.py;*.pyw",
+    "Ruby (*.rb;*.rbw)|*.rb;*.rbw", "SQL (*.sql)|*.sql",
+    "Smalltalk (*.st)|*.st",
+    "Visual Basic (*.vb;*.vbs)|*.vb;*.vbs", "Verilog (*.v)|*.v",
+    "VHDL (*.vhd;*.vhdl)|*.vhd;*.vhdl",
+    "XML (*.xml;*.xsml;*.xsl;*.xsd;*.kml;*.wsdl)|*.xml;*.xsml;*.xsl;*.xsd;*.kml;*.wsdl",
+    "YAML (*.yml)|*.yml")]

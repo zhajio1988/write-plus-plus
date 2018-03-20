@@ -8,6 +8,7 @@ import codecs
 import os
 import re
 import shutil
+import sys
 import webbrowser
 import wx
 from io import StringIO
@@ -492,7 +493,7 @@ class PrimaryEditor(SecondaryEditor):
         super(PrimaryEditor, self).__init__(parent)
 
         self.bom = None
-        self.encoding = wx.GetDefaultPyEncoding()
+        self.encoding = sys.getdefaultencoding()
         self.raw = False
         self.readonly = False
 
@@ -559,7 +560,7 @@ class PrimaryEditor(SecondaryEditor):
         finally:
             fileobj.close()
         self.bom = None
-        self.encoding = wx.GetDefaultPyEncoding()
+        self.encoding = sys.getdefaultencoding()
         for bom in encodings:
             if text.startswith(bom):
                 self.bom = bom
@@ -671,7 +672,7 @@ class PrimaryEditor(SecondaryEditor):
             filename = ""
         else:
             filename = self.filename
-        dialog = wx.FileDialog(self._frame, defaultDir=os.path.dirname(self.filename), defaultFile=filename, wildcard=self._frame.filetypes, style=wx.SAVE | wx.OVERWRITE_PROMPT)
+        dialog = wx.FileDialog(self._frame, defaultDir=os.path.dirname(self.filename), defaultFile=filename, wildcard=self._frame.filetypes, style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
         dialog.SetFilterIndex(1)
         if dialog.ShowModal() == wx.ID_OK:
             self.filename = dialog.GetPath()
